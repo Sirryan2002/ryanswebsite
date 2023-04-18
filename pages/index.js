@@ -70,7 +70,7 @@ export const HomePage = (props, context) => {
   return (
     <>
       <div id="name-container">
-        <span id="name-hi">Hi, <span id="my-name"> I'm <span id="my-name-ryan">Ryan</span></span></span>
+        <span id="name-hi">Hi, <span id="my-name"> I&#x27;m <span id="my-name-ryan">Ryan</span></span></span>
       </div>
       <div className="intro"></div>
       <div className="mainpage-content-container">
