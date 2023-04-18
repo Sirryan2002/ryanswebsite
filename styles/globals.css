@@ -1,4 +1,7 @@
 @import 'mainpage.css';
+@import 'card.css';
+@import 'main.css';
+@import 'navbar.css';
 
 :root {
   --foreground-rgb: 0, 0, 0;
