@@ -86,7 +86,7 @@ export const HomePage = (props, context) => {
         </div>
         <div className="mainpage-content-projects">
           <a class="textOverImage" data-text="My Projects">
-          <img src="/cmdpicture.png"  className="splash-image"/>
+          <img src="/cmdpicture.jpg"  className="splash-image"/>
           </a>
         </div>
         <div className="mainpage-content-breaking">
