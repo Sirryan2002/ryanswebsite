@@ -1,4 +1,3 @@
-
 function Card({ imageSrc, title, bullets, link }) {
   return (
     <div className="card">

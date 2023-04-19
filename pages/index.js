@@ -1,36 +1,43 @@
-import Image from 'next/image';
-import Card from "../components/Card";
-import ReactDOM from 'react-dom';
+import Sidebar from "../components/Sidenav"
+import { useEffect } from 'react';
 
-if (typeof window !== 'undefined') {
+function Intro() {
+  let seenIntro = parseInt(window.localStorage.getItem('SeenIntro'))
   let intro = document.querySelector('.intro')
   let navbar = document.querySelector('.sidenav-contents')
   let namehi = document.querySelector('#name-hi')
   let myname = document.querySelector('#my-name')
   let namecontainer = document.querySelector('#name-container')
-  navbar.style.opacity = 0
-  document.addEventListener('DOMContentLoaded', ()=> {
+  if (seenIntro !== 1) {
+    navbar.style.opacity = 0
     setTimeout(()=> {
       setTimeout(()=> {
         namehi.style.opacity = 1
-      }, 1000)
+      }, 2000)
       setTimeout(()=> {
         myname.style.opacity = 1
-      }, 2000)
+      }, 3000)
       setTimeout(()=> {
         intro.style.left = '-100vw'
         namecontainer.style.opacity = 0
-      }, 4000)
+      }, 5000)
       setTimeout(()=> {
         navbar.style.opacity = 1
         namecontainer.remove()
         intro.remove()
       }, 6500)
     })
-  })
+    window.localStorage.setItem('SeenIntro', JSON.stringify(1))
+  } else {
+    setTimeout(()=> {
+      namecontainer.remove()
+      intro.remove()
+    })
+  }
 }
-
 export default function Home() {
+  useEffect(() => Intro(),[])
+
   return (
     <WebsiteContainer>
       <Sidebar/>
@@ -42,27 +49,9 @@ export default function Home() {
 export const WebsiteContainer = (props, context) => {
   const { as = 'div', children, ...rest } = props;
   return (
-    <div class="website-container">
+    <div className="website-container">
       {children}
     </div>
-  )
-}
-
-export const Sidebar = (props, context) => {
-  return (
-    <header>
-      <div className="sidenav">
-        <div className="sidenav-contents">
-          <span class={"d-none d-lg-block"}><Image src="/headerback.jpg" width="160" height="160" class={"sidenav-profile"} /></span>
-          <a href="#">Home</a>
-          <a href="#">About</a>
-          <a href="#">Experience</a>
-          <a href="#">Education</a>
-          <a href="#">Skills</a>
-          <a href="#">Contact</a>
-        </div>
-      </div>
-    </header>
   )
 }
 
@@ -76,22 +65,22 @@ export const HomePage = (props, context) => {
       <div className="mainpage-content-container">
         <div className="mainpage-content-resume">
           <a class="textOverImage" data-text="My Work Experience">
-            <img src="/gerber.jpg" className="splash-image"/>
+            <img src="/gerber.jpg" className="splash-image" alt="Photo of Ryan posing with coworkers"/>
           </a>
         </div>
         <div className="mainpage-content-friends">
           <a class="textOverImage" data-text="My Friends">
-          <img src="/myfriends.jpg" className="splash-image"/>
+          <img src="/myfriends.jpg" className="splash-image" alt="Photo of Ryan's Friends and Himself"/>
           </a>
         </div>
         <div className="mainpage-content-projects">
           <a class="textOverImage" data-text="My Projects">
-          <img src="/cmdpicture.jpg"  className="splash-image"/>
+          <img src="/cmdpicture.jpg"  className="splash-image" alt="Photo of a windows Command Prompt Console"/>
           </a>
         </div>
         <div className="mainpage-content-breaking">
           <a class="textOverImage" data-text="My Breaking">
-            <img src="/breaking.jpg" className="splash-image"/>
+            <img src="/breaking.jpg" className="splash-image" alt="Photo of the MSU Breakdance Club"/>
           </a>
         </div> 
       </div>
