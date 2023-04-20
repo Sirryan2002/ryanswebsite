@@ -18,7 +18,7 @@ function Intro() {
         myname.style.opacity = 1
       }, 3000)
       setTimeout(()=> {
-        intro.style.left = '-100vw'
+        intro.style.width = '12.5em'
         namecontainer.style.opacity = 0
       }, 5000)
       setTimeout(()=> {
@@ -46,16 +46,7 @@ export default function Home() {
   )
 }
 
-export const WebsiteContainer = (props, context) => {
-  const { as = 'div', children, ...rest } = props;
-  return (
-    <div className="website-container">
-      {children}
-    </div>
-  )
-}
-
-export const HomePage = (props, context) => {
+const HomePage = (props, context) => {
   return (
     <>
       <div id="name-container">
@@ -88,3 +79,11 @@ export const HomePage = (props, context) => {
   )
 }
 
+const WebsiteContainer = (props, context) => {
+  const { as = 'div', children, ...rest } = props;
+  return (
+    <div className="website-container">
+      {children}
+    </div>
+  )
+}
