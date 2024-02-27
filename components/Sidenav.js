@@ -11,7 +11,7 @@ function Sidebar({props, context}) {
                     <a href="#">About</a>
                     <a href="#">Experience</a>
                     <a href="#">Education</a>
-                    <Link href="/projects"><a>Projects</a></Link> {/* Link to projects.js */}
+                    <Link href="/projects">Projects</Link> {/* Link to projects.js */}
                     <a href="#">Contact</a>
                 </header>
                 <footer>
