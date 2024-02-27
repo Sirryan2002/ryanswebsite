@@ -35,6 +35,7 @@ function Intro() {
     })
   }
 }
+
 export default function Home() {
   useEffect(() => Intro(),[])
 

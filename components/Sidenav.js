@@ -1,4 +1,6 @@
 import Image from 'next/image';
+import Link from 'next/link'; // Import Link from next.js
+
 function Sidebar({props, context}) {
     return (
         <div className="sidenav">
@@ -9,7 +11,7 @@ function Sidebar({props, context}) {
                     <a href="#">About</a>
                     <a href="#">Experience</a>
                     <a href="#">Education</a>
-                    <a href="#">Skills</a>
+                    <Link href="/projects"><a>Projects</a></Link> {/* Link to projects.js */}
                     <a href="#">Contact</a>
                 </header>
                 <footer>
