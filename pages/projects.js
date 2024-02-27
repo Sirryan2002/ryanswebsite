@@ -64,21 +64,21 @@ const projects = [
 
 const Projects = () => {
   return (
-    <div className={projectsContainer}> {/* Using CSS module class for projects container */}
+    <div className='projects-container'> {/* Using CSS module class for projects container */}
       <Head>
         <title>Projects</title>
       </Head>
       <h1>Projects</h1>
       {projects.map((project, index) => (
-        <div key={index} className={projectCard}> {/* Using CSS module class for project card */}
+        <div key={index} className='project-card'> {/* Using CSS module class for project card */}
           <h2>{project.title}</h2>
-          <img src={project.image} alt={project.title} className={projectImage} /> {/* Using CSS module class for project image */}
-          <p className={projectDescription}>{project.description}</p> {/* Using CSS module class for project description */}
-          <div className={projectLinks}> {/* Using CSS module class for project links */}
+          <img src={project.image} alt={project.title} className='project-card' /> {/* Using CSS module class for project image */}
+          <p className='project-description'>{project.description}</p> {/* Using CSS module class for project description */}
+          <div className='project-links'> {/* Using CSS module class for project links */}
             <a href={project.website} target="_blank" rel="noopener noreferrer">Website</a>
             {project.github && (
               <a href={project.github} target="_blank" rel="noopener noreferrer">
-                <img src="/github-icon.png" alt="GitHub" className={githubFavicon} /> {/* Using CSS module class for GitHub favicon */}
+                <img src="/github-icon.png" alt="GitHub" className='github-favicon' /> {/* Using CSS module class for GitHub favicon */}
               </a>
             )}
           </div>
