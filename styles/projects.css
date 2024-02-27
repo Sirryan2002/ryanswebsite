@@ -1,0 +1,51 @@
+/* Projects Page */
+.projects-container {
+    grid-column-start: 2;
+    grid-row-start: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.project-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.project-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.project-description {
+    margin-top: 15px;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.project-links {
+    margin-top: 15px;
+}
+
+.project-links a {
+    display: inline-block;
+    margin-right: 10px;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.project-links a:hover {
+    text-decoration: underline;
+}
+
+.project-links .github-favicon {
+    vertical-align: middle;
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+}

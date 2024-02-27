@@ -64,20 +64,24 @@ const projects = [
 
 const Projects = () => {
   return (
-    <div>
+    <div className={projectsContainer}> {/* Using CSS module class for projects container */}
       <Head>
         <title>Projects</title>
       </Head>
       <h1>Projects</h1>
       {projects.map((project, index) => (
-        <div key={index}>
+        <div key={index} className={projectCard}> {/* Using CSS module class for project card */}
           <h2>{project.title}</h2>
-          <img src={project.image} alt={project.title} />
-          <p>{project.description}</p>
-          <p>
+          <img src={project.image} alt={project.title} className={projectImage} /> {/* Using CSS module class for project image */}
+          <p className={projectDescription}>{project.description}</p> {/* Using CSS module class for project description */}
+          <div className={projectLinks}> {/* Using CSS module class for project links */}
             <a href={project.website} target="_blank" rel="noopener noreferrer">Website</a>
-            {project.github && <a href={project.github} target="_blank" rel="noopener noreferrer"><img src="/github-icon.png" alt="GitHub" width="20" /></a>}
-          </p>
+            {project.github && (
+              <a href={project.github} target="_blank" rel="noopener noreferrer">
+                <img src="/github-icon.png" alt="GitHub" className={githubFavicon} /> {/* Using CSS module class for GitHub favicon */}
+              </a>
+            )}
+          </div>
         </div>
       ))}
     </div>
