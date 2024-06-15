@@ -6,19 +6,19 @@
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: #111;
+    background-color: #5569dc;
     overflow-x: hidden;
     padding-top: 60px;
     border-style: solid;
-    border-color: #be6644;
-    border-width: 0em .5em 0em 0em;
+    /*border-color: #be6644;
+    border-width: 0em .5em 0em 0em;*/
 }
 
 .sidenav a {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
     font-size: 1.5em;
-    color: #818181;
+    color: #FFFFFF;
     display: block;
     transition: 0.3s;
     font-family: 'Open Sans', sans-serif;
