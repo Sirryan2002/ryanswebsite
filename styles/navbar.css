@@ -38,9 +38,3 @@
     opacity: 1;
     transition: 1s;
 }
-
-footer {
-    position:absolute; 
-    bottom: 3em;
-    left: 1em;
-}
