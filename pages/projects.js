@@ -14,8 +14,8 @@ export default function Home() {
 const WebsiteContainer = (props, context) => {
     const { as = 'div', children, ...rest } = props;
     return (
-        <div class="website-container">
-        {children}
+        <div className="website-container">
+          {children}
         </div>
     )
 }

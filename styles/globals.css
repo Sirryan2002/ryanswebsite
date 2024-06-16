@@ -3,6 +3,7 @@
 @import 'main.css';
 @import 'navbar.css';
 @import 'projects.css';
+@import 'resume.css';
 
 :root {
   --foreground-rgb: 0, 0, 0;

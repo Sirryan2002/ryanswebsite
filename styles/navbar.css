@@ -1,40 +1,28 @@
-  /* Side Navbar */
-.sidenav {
-    height: 100vh;
-    width: 12.5em;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #5569dc;
-    overflow-x: hidden;
-    padding-top: 60px;
-    border-style: solid;
-    /*border-color: #be6644;
-    border-width: 0em .5em 0em 0em;*/
-}
-
-.sidenav a {
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 1.5em;
-    color: #FFFFFF;
-    display: block;
-    transition: 0.3s;
-    font-family: 'Open Sans', sans-serif;
-}
-
-.sidenav a:hover {
-    color: #f1f1f1;
-}
-
-.sidenav-profile {
-    margin:.8em;
-    border-radius: 50% !important;
-    border: 0.5rem solid rgba(255, 255, 255, 0.2);
-}
+nav {
+    padding-left: 2em;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+  }
   
-.sidenav-contents {
-    opacity: 1;
-    transition: 1s;
-}
+  .Header-nav-item {
+    color: #FFFFFF;
+    display: inline-block;
+    padding: .618em 0;
+    margin: 0 .618em;
+    text-transform: uppercase;
+    font-size: 22px;
+    text-decoration: none !important;
+    letter-spacing: .12em;
+    transition: color 170ms ease-in-out, background-color 170ms ease-in-out;
+  }
+  
+  .titleimage {
+    max-width: 100%;
+    width: 100%;
+    display: inline-block;
+    margin-top: -5em;
+    z-index: -5;
+    position: relative;
+    filter: brightness(70%);
+  }
