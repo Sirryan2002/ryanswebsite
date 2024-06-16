@@ -1,11 +1,10 @@
-import Sidebar from "../components/Sidenav"
+
 import Head from 'next/head';
 
 export default function Home() {
   
     return (
       <WebsiteContainer>
-        <Sidebar/>
         <Projects/>
       </WebsiteContainer>
     )
