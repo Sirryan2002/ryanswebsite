@@ -1,42 +1,99 @@
 .section.resume {
-    background-color: #2A274F;
-    color: white;
-    padding: 4em 2em;
-  }
-  
-  .resume-content h3 {
-    margin-top: 1em;
-    font-size: 1.5em;
-    color: #FFD700;
-  }
-  
-  .resume-content p {
-    font-size: 1.5em;
-  }
-  
-  .resume-content ul {
-    font-size: 1.2rem;
-    list-style-type: disc;
-    margin-left: 2em;
-    margin-bottom: 1em;
-  }
-  
-  .experience {
-    display: flex;
-    align-items: center;
-    margin-bottom: 2em;
-  }
-  
-  .company-logo {
-    width: 50px;
-    height: 50px;
-    margin-right: 1em;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid #FFD700;
-  }
-  
-  iframe {
-    margin-top: 2em;
-  }
-  
+  background-color: #2A274F;
+  color: white;
+  margin: 0 auto;
+  text-align: center;
+  padding: 4em 2em;
+}
+
+.resume-container {
+  margin-left: 25%;
+  margin-right: 25%;
+}
+
+.resume-content {
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.5em;
+  font-size: 2em;
+}
+
+.header-icon {
+  font-size: 2em;
+  margin-right: 0.5em;
+}
+
+.resume-content h3 {
+  margin-top: 1em;
+  font-size: 1.8em;
+  color: #FFD700;
+}
+
+.resume-content p {
+  font-size: 1.2em;
+}
+
+.resume-content ul {
+  font-size: 1.2rem;
+  line-height: 1.1;
+  list-style-type: disc;
+  margin-left: 1.5em;
+  margin-bottom: 1em;
+  text-align: left;
+}
+
+.experience {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2em;
+  text-align: left;
+}
+
+.company-logo {
+  width: 75px;
+  height: 75px;
+  margin-right: 1.5em;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #FFD700;
+}
+
+iframe {
+  margin-top: 2em;
+}
+
+.skills-section {
+  margin-top: 2em;
+  text-align: left;
+}
+
+.skills-section h4 {
+  font-size: 1.5em;
+  color: #FFD700;
+  margin-top: 1em;
+}
+
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+  padding: 0;
+}
+
+.skills-list li {
+  margin-right: 1.5em;
+  margin-bottom: 1em;
+  font-size: 1.2em;
+  display: flex;
+  align-items: center;
+}
+
+.skills-list i {
+  font-size: 1.5em;
+  margin-right: 0.5em;
+}
