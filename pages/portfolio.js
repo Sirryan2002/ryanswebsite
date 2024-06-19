@@ -9,6 +9,9 @@ import WebsiteContainer from '@/components/Container';
 export default function Portfolio() {
   return (
     <WebsiteContainer>
+        <Head>
+            <title>Ryan Longo - Portfolio</title>
+        </Head>
       <NavBar />
       <PortfolioContent />
       <Footer />

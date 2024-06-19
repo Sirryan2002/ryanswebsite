@@ -27,6 +27,16 @@ export default function Home() {
 
   return (
     <WebsiteContainer>
+      <Head>
+        <title>Ryan Longo - Home</title>
+        <meta property="og:title" content="Ryan Longo - Home" />
+        <meta property="og:description" content="Hi I'm Ryan Longo! I'm a MSU student studying Economics and Education Policy. This website will tell you all about me and what I'm all about." />
+        <meta property="og:image" content="https://ryanlongo.net/breaking4.png"/>
+        <meta property="og:url" content="https://ryanlongo.net/"/>
+        <meta property="og:type" content="website"/>
+        <meta property="og:site_name" content="Ryan Longo's Portfolio"/>
+        <meta property="og:locale" content="en_US"/>
+      </Head>
       <NavBar />
       <HomePage handleScroll={handleScroll} blurbs={blurbs} />
       <Footer />
