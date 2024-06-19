@@ -1,7 +1,9 @@
+// index.js
 import { useEffect } from 'react';
 import NavBar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Card from "../components/Card";
+import WebsiteContainer from '@/components/Container';
 
 function Intro() {
   // Placeholder for any introductory scripts or animations
@@ -25,7 +27,9 @@ export default function Home() {
 
   return (
     <WebsiteContainer>
+      <NavBar />
       <HomePage handleScroll={handleScroll} blurbs={blurbs} />
+      <Footer />
     </WebsiteContainer>
   );
 }
@@ -33,7 +37,7 @@ export default function Home() {
 const HomePage = ({ handleScroll, blurbs }) => {
   return (
     <>
-      <NavBar />
+      
       <div className="name_splash">
         <span><b>RYAN LONGO</b></span>
         <span>Student & Chronic Hobbyist</span>
@@ -44,11 +48,11 @@ const HomePage = ({ handleScroll, blurbs }) => {
       <div className="titleimage-container">
         <img className="titleimage" src={'/breaking4.png'} alt="Background" />
       </div>
-      <section id="who-i-am" className="section who-i-am">
+      <section id="who-i-am" className="section">
         <h2>Who I Am</h2>
         <p>{blurbs.my_story}</p>
       </section>
-      <section id="learn-more" className="section learn-more">
+      <section id="learn-more" className="section-light">
         <h2>Learn More About Me</h2>
         <div className="cards">
           <Card
@@ -57,31 +61,35 @@ const HomePage = ({ handleScroll, blurbs }) => {
             imgAlt="Resume"
             title="Resume"
             description="Check out my professional experiences and skills."
+            size="medium"  // Use medium size for index page
           />
           <Card
-            href="#projects"
+            href="/portfolio"
             imgSrc="/projects-icon.png"
             imgAlt="Projects"
-            title="Projects"
+            title="Portfolio"
             description="Explore the projects I have worked on."
+            size="medium"  // Use medium size for index page
           />
           <Card
-            href="#services"
+            href="/services"
             imgSrc="/services-icon.png"
-            imgAlt="Services"
             title="Services"
+            imgAlt="Services"
             description="Discover the services I offer."
+            size="medium"  // Use medium size for index page
           />
           <Card
             href="https://www.linkedin.com/in/ryan-longo-094454239/"
             imgSrc="/linkedin-icon.jpg"
-            imgAlt="LinkedIn"
             title="LinkedIn"
+            imgAlt="LinkedIn"
             description="Connect with me on LinkedIn."
+            size="medium"  // Use medium size for index page
           />
         </div>
       </section>
-      <section id="contact" className="section contact">
+      <section id="contact" className="section">
         <h2>Contact Me</h2>
         <p>Feel free to reach out to me via the contact form below.</p>
         <form>
@@ -91,15 +99,8 @@ const HomePage = ({ handleScroll, blurbs }) => {
           <button type="submit">Send</button>
         </form>
       </section>
-      <Footer />
+      
     </>
   );
 };
 
-const WebsiteContainer = ({ children }) => {
-  return (
-    <div className="website-container">
-      {children}
-    </div>
-  );
-};

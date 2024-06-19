@@ -1,0 +1,27 @@
+/* Section styles */
+section {
+    background-color: #1C1A40;
+    color: white;
+    padding: 4em 2em;
+  }
+  
+  .section-light {
+    background-color: #2A274F;
+  }
+  
+  /* Media Queries */
+  
+  /* For tablets and larger devices */
+  @media (max-width: 768px) {
+    section {
+      padding: 2em 1em;
+    }
+  }
+  
+  /* For mobile phones */
+  @media (max-width: 480px) {
+    section {
+      padding: 1em 0.5em;
+    }
+  }
+  

@@ -1,9 +1,15 @@
-@import 'mainpage.css';
-@import 'card.css';
 @import 'main.css';
-@import 'navbar.css';
-@import 'projects.css';
-@import 'resume.css';
+
+
+/* Pages */
+@import 'pages/mainpage.css';
+@import 'pages/projects.css';
+@import 'pages/resume.css';
+
+/* Components */
+@import 'components/card.css';
+@import 'components/navbar.css';
+@import 'components/section.css';
 
 :root {
   --foreground-rgb: 0, 0, 0;

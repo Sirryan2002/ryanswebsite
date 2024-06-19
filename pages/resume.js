@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import NavBar from "../components/Navbar";
 import Footer from "../components/Footer";
+import WebsiteContainer from '@/components/Container';
 
 const Resume = () => {
   return (
@@ -11,7 +12,7 @@ const Resume = () => {
         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet' />
       </Head>
       <NavBar />
-      <section id="resume" className="section resume">
+      <section id="resume" className="resume">
         <div className="resume-container">
           <div className="header">
             <i className='bx bxs-user header-icon'></i>
@@ -50,7 +51,7 @@ const Resume = () => {
               <img src="/cz-logo.webp" alt="Comfort Zone Cigar Lounge & Bistro" className="company-logo" />
               <div>
                 <p><strong>Comfort Zone Cigar Lounge & Bistro</strong> - October 2023-Present</p>
-                <p><em>Cocktial Server/Waiter</em></p>
+                <p><em>Cocktail Server/Waiter</em></p>
                 <ul>
                   <li>Engaged guests with personalized service.</li>
                   <li>Drove sales through expert recommendations and upselling.</li>
