@@ -37,7 +37,7 @@ const PortfolioContent = () => {
           />
           <Card
             href="/portfolio/coding"
-            imgSrc="/services-icon.png"
+            imgSrc="/breaking.jpg"
             imgAlt="University Portfolio"
             title="University Portfolio"
             description="My School and Student Organization projects"
@@ -45,7 +45,7 @@ const PortfolioContent = () => {
           />
           <Card
             href="/portfolio/coding"
-            imgSrc="/services-icon.png"
+            imgSrc="/cmdpicture.jpg"
             imgAlt="For Fun Portfolio"
             title="For Fun Portfolio"
             description="My projects that I did purely for fun"
