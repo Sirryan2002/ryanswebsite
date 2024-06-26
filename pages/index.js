@@ -1,5 +1,5 @@
 // index.js
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Head from 'next/head';
 import NavBar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -101,17 +101,67 @@ const HomePage = ({ handleScroll, blurbs }) => {
         </div>
       </section>
       <section id="contact" className="section">
-        <h2>Contact Me</h2>
-        <p>Feel free to reach out to me via the contact form below.</p>
-        <form>
-          <input type="text" name="name" placeholder="Your Name" />
-          <input type="email" name="email" placeholder="Your Email" />
-          <textarea name="message" placeholder="Your Message"></textarea>
-          <button type="submit">Send</button>
-        </form>
+        <ContactForm />
       </section>
       
     </>
   );
 };
 
+const ContactForm = () => {
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [isConfirming, setIsConfirming] = useState(false);
+  const [error, setError] = useState('');
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsConfirming(true);
+  };
+
+  const handleConfirm = async () => {
+    try {
+      const response = await fetch('/api/sendContact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+      const data = await response.json();
+      if (data.error) {
+        setError(data.error);
+      } else {
+        alert('Message sent successfully!');
+        setFormData({ name: '', email: '', message: '' });
+        setIsConfirming(false);
+        setError('');
+      }
+    } catch (err) {
+      setError('Failed to send message. Please try again later.');
+    }
+  };
+
+  return (
+    <section id="contact" className="section">
+      <h2>Contact Me</h2>
+      <p>Feel free to reach out to me via the contact form below.</p>
+      <form onSubmit={handleSubmit}>
+        <input type="text" name="name" placeholder="Your Name" value={formData.name} onChange={handleChange} required />
+        <input type="email" name="email" placeholder="Your Email" value={formData.email} onChange={handleChange} required />
+        <textarea name="message" placeholder="Your Message" value={formData.message} onChange={handleChange} required></textarea>
+        <button type="submit">Send</button>
+      </form>
+      {isConfirming && (
+        <div className="confirmation-modal">
+          <p>Are you sure you want to send this message?</p>
+          <button onClick={handleConfirm}>Confirm</button>
+          <button onClick={() => setIsConfirming(false)}>Cancel</button>
+        </div>
+      )}
+      {error && <p className="error">{error}</p>}
+    </section>
+  );
+};
