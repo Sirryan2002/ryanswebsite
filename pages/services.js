@@ -7,9 +7,12 @@ import WebsiteContainer from '@/components/Container';
 export default function Services() {
   return (
     <WebsiteContainer>
-      <NavBar />
-      <ServicesContent />
-      <Footer />
+        <Head>
+            <title>Ryan Longo - Services</title>
+        </Head>
+        <NavBar />
+        <ServicesContent />
+        <Footer />
     </WebsiteContainer>
   );
 }
@@ -17,9 +20,7 @@ export default function Services() {
 const ServicesContent = () => {
   return (
     <>
-      <Head>
-        <title>Services</title>
-      </Head>
+
       <section id="portfolio-cards" className="" style={{"padding-bottom" : "20em"}}>
         <div className="cards">
           <Card

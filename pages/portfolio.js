@@ -5,6 +5,8 @@ import Card from '../components/Card';
 import NavBar from "../components/Navbar";
 import Footer from "../components/Footer";
 import WebsiteContainer from '@/components/Container';
+import Modal from '@/components/Modal'; // Import the Modal component
+
 
 export default function Portfolio() {
   return (
@@ -64,25 +66,43 @@ const PortfolioContent = () => {
   );
 };
 
+
+
 const ProjectsGallery = () => {
   const [projects, setProjects] = useState([]);
   const [hasMore, setHasMore] = useState(true);
   const [lastProject, setLastProject] = useState(null);
+  const [selectedProject, setSelectedProject] = useState(null); // State for selected project
 
   const fetchProjects = async () => {
     try {
       const res = await fetch(`/api/projects?${lastProject ? `startAfter=${lastProject.id}` : ''}&limit=8`);
       const data = await res.json();
       if (data.projects.length < 8) {
-        setHasMore(false)
+        setHasMore(false);
       }
-      setProjects(prevProjects => [...prevProjects, ...data.projects]);
+      setProjects((prevProjects) => [...prevProjects, ...data.projects]);
       if (data.projects.length > 0) {
-        setLastProject(data.projects[data.projects.length - 1])
+        setLastProject(data.projects[data.projects.length - 1]);
       }
     } catch (error) {
-        console.error("Error fetching projects:", error);
+      console.error("Error fetching projects:", error);
     }
+  };
+
+  const fetchProjectDetails = async (projectId) => {
+    try {
+      const res = await fetch(`/api/getProject?id=${projectId}`);
+      const data = await res.json();
+      console.log(data)
+      setSelectedProject(data);
+    } catch (error) {
+      console.error("Error fetching project details:", error);
+    }
+  };
+
+  const handleProjectClick = (projectId) => {
+    fetchProjectDetails(projectId);
   };
 
   useEffect(() => {
@@ -90,30 +110,39 @@ const ProjectsGallery = () => {
   }, []);
 
   return (
-    <InfiniteScroll
-      dataLength={projects.length}
-      next={fetchProjects}
-      hasMore={hasMore}
-      loader={<h4>Loading Projects...</h4>}
-      endMessage={<p style={{ textAlign: 'center' }}><b>No more projects</b></p>}
-    >
-      <div className="projects-container">
-        {projects.map((project, index) => (
-          <div key={index} className="project-card">
-            <center><h2>{project.title}</h2></center>
-            <img src={project.image} alt={project.title} className="project-image" />
-            <p className="project-description">{project.description}</p>
-            <div className="project-links">
-              <a href={project.website} target="_blank" rel="noopener noreferrer"><i className='bx bx-link-external' style={{"font-size" : "3em"}}></i></a>
-              {project.github && (
-                <a href={project.github} target="_blank" rel="noopener noreferrer">
-                  <i className='bx bxl-github' style={{"font-size" : "3em"}}></i>
-                </a>
-              )}
+    <>
+      <InfiniteScroll
+        dataLength={projects.length}
+        next={fetchProjects}
+        hasMore={hasMore}
+        loader={<h4>Loading Projects...</h4>}
+        endMessage={
+          <p style={{ textAlign: 'center' }}>
+            <b>No more projects</b>
+          </p>
+        }
+      >
+        <div className="projects-container">
+          {projects.map((project, index) => (
+            <div key={index} className="project-card" onClick={() => handleProjectClick(project.id)}>
+              <center><h2>{project.title}</h2></center>
+              <img src={project.image} alt={project.title} className="project-image" />
+              <p className="project-description">{project.description}</p>
+              <div className="project-links">
+                <a ref={project.website} target="_blank" rel="noopener noreferrer"><i className='bx bx-link-external' style={{"font-size" : "3em"}}></i></a>
+                {project.github && (
+                  <a href={project.github} target="_blank" rel="noopener noreferrer">
+                    <i className='bx bxl-github' style={{"font-size" : "3em"}}></i>
+                  </a>
+                )}
+              </div>
             </div>
-          </div>
-        ))}
-      </div>
-    </InfiniteScroll>
+          ))}
+        </div>
+      </InfiniteScroll>
+      {selectedProject && (
+        <Modal project={selectedProject} onClose={() => setSelectedProject(null)} />
+      )}
+    </>
   );
 };
