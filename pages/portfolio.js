@@ -129,7 +129,7 @@ const ProjectsGallery = () => {
               <img src={project.image} alt={project.title} className="project-image" />
               <p className="project-description">{project.description}</p>
               <div className="project-links">
-                <a ref={project.website} target="_blank" rel="noopener noreferrer"><i className='bx bx-link-external' style={{"font-size" : "3em"}}></i></a>
+                <a href={project.website} target="_blank" rel="noopener noreferrer"><i className='bx bx-link-external' style={{"font-size" : "3em"}}></i></a>
                 {project.github && (
                   <a href={project.github} target="_blank" rel="noopener noreferrer">
                     <i className='bx bxl-github' style={{"font-size" : "3em"}}></i>
