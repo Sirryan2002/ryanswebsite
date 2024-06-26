@@ -6,7 +6,9 @@ const AdminAuth = ({ onAuthSuccess }) => {
   const [error, setError] = useState('');
 
   const handleLogin = () => {
+    console.log(process.env.NEXT_PUBLIC_ADMIN_PASSWORD)
     if (password === process.env.NEXT_PUBLIC_ADMIN_PASSWORD) {
+        
       onAuthSuccess();
     } else {
       setError('Incorrect password');
