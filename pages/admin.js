@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { Tabs, Tab, Box, Typography, Container, Button, TextField, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
-import { fetchContacts, deleteContact } from '@/lib/adminAPI'; // You'll create these functions next
+import { Tabs, Tab, Box, Typography, Container, Button, TextField, DataGrid, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
+import { fetchContacts, fetchProjects, updateProject, deleteContact } from '@/lib/adminAPI'; // You'll create these functions next
 import { Delete as DeleteIcon, Edit as EditIcon, Add as AddIcon } from '@mui/icons-material';
 
 
