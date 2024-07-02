@@ -42,7 +42,7 @@ const Resume = () => {
                 <ul>
                   <li>Led a 501c3 non-profit of 95 employees.</li>
                   <li>Coordinated logistics and advertising for 2 conferences.</li>
-                  <li>Redesigned the organization's website and implemented new financial controls.</li>
+                  <li>Redesigned the organizations website and implemented new financial controls.</li>
                 </ul>
               </div>
             </div>
