@@ -239,7 +239,7 @@ function ProjectsTab({ projects, setProjects }) {
           <DialogTitle>Confirm Delete</DialogTitle>
           <DialogContent>
             <DialogContentText>
-              Are you sure you want to delete the project "{projectToDelete?.title}"?
+              Are you sure you want to delete the project {projectToDelete?.title}?
             </DialogContentText>
           </DialogContent>
           <DialogActions>
