@@ -7,8 +7,8 @@ section a .portfolio {
 
 
 
-/* portfolios GUI */
-.portfolios-container {
+/* Projects GUI */
+.projects-container {
     grid-column-start: 2;
     grid-row-start: 1;
     display: grid;
@@ -17,7 +17,7 @@ section a .portfolio {
     padding: 20px;
 }
 
-.portfolio-card {
+.project-card {
     background-color: #fff;
     border: 1px solid #ddd;
     color: #2A274F;
@@ -28,7 +28,7 @@ section a .portfolio {
     grid-template-rows: 7em 12em 12em 5em;
 }
 
-.portfolio-card img {
+.project-card img {
     width: -webkit-fill-available;
     height: auto;
     border-radius: 5px;
@@ -36,28 +36,28 @@ section a .portfolio {
     height: 10em;
 }
 
-.portfolio-description {
+.project-description {
     margin-top: 15px;
     font-size: 16px;
     line-height: 1.5;
 }
 
-.portfolio-links {
+.project-links {
     margin-top: 15px;
 }
 
-.portfolio-links a {
+.project-links a {
     display: inline-block;
     margin-right: 10px;
     color: #007bff;
     text-decoration: none;
 }
 
-.portfolio-links a:hover {
+.project-links a:hover {
     text-decoration: underline;
 }
 
-.portfolio-links .github-favicon {
+.project-links .github-favicon {
     vertical-align: middle;
     width: 40px;
     height: 40px;
