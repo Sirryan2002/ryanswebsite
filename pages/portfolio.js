@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import Head from 'next/head';
 import Link from 'next/link'; // Import Link from next.js
-import Card from '../components/Card';
+import Card from '@/components/Card';
 import NavBar from "../components/Navbar";
 import Footer from "../components/Footer";
 import WebsiteContainer from '@/components/Container';

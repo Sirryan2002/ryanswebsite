@@ -100,14 +100,14 @@ const TestPage = () => {
                         name="description"
                         label="Description"
                         multiline
-                        rows={2}
+                        rows={6}
                         value={projectDraft.description}
                         onChange={handleChange} />
                     <TextField
                         name="body"
                         label="Body"
                         multiline
-                        rows={4}
+                        rows={8}
                         value={projectDraft.body}
                         onChange={handleChange} />
                     <TextField
