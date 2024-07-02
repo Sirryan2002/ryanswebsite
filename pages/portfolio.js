@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import Head from 'next/head';
+import Link from 'next/link'; // Import Link from next.js
 import Card from '../components/Card';
 import NavBar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -13,6 +14,7 @@ export default function Portfolio() {
     <WebsiteContainer>
         <Head>
             <title>Ryan Longo - Portfolio</title>
+            <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet' />
         </Head>
       <NavBar />
       <PortfolioContent />
@@ -26,10 +28,6 @@ export default function Portfolio() {
 const PortfolioContent = () => {
   return (
     <>
-      <Head>
-        <title>Projects</title>
-        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet' />
-      </Head>
       <section id="portfolio-cards" className="">
         <div className="cards">
           <Card
@@ -122,13 +120,13 @@ const ProjectsGallery = () => {
           </p>
         }
       >
-        <div className="projects-container">
+        <div className="portfolios-container">
           {projects.map((project, index) => (
-            <div key={index} className="project-card" onClick={() => handleProjectClick(project.id)}>
+            <div key={index} className="portfolio-card" onClick={() => handleProjectClick(project.id)}>
               <center><h2>{project.title}</h2></center>
-              <img src={project.image} alt={project.title} className="project-image" />
-              <p className="project-description">{project.description}</p>
-              <div className="project-links">
+              <img src={project.image} alt={project.title} className="portfolio-image" />
+              <p className="portfolio-description">{project.description}... {<Link href={{pathname: '/portfolio/[id]', query: {id: project.id}}}>{"Read More"}</Link>}</p>
+              <div className="portfolio-links">
                 <a href={project.website} target="_blank" rel="noopener noreferrer"><i className='bx bx-link-external' style={{"font-size" : "3em"}}></i></a>
                 {project.github && (
                   <a href={project.github} target="_blank" rel="noopener noreferrer">
