@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react';
-import { Tabs, Tab, Box, Typography, Container, Button, TextField, DataGrid } from '@mui/material';
+import { useRouter } from 'next/router';
+import { Tabs, Tab, Box, Typography, Container, Button, TextField, DataGrid, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
 import { fetchContacts, fetchProjects, updateProject, deleteContact } from '@/lib/adminAPI'; // You'll create these functions next
+import { Delete as DeleteIcon, Edit as EditIcon, Add as AddIcon } from '@mui/icons-material';
+
 
 import AdminAuth from '@/components/AdminAuth'; // Create this component based on the code above
 
@@ -17,14 +20,12 @@ function TabPanel(props) {
     >
       {value === index && (
         <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
+          {children}
         </Box>
       )}
     </div>
   );
 }
-
-
 
 export default function AdminDashboard() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -48,10 +49,21 @@ const AdminContent = () => {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+  
+  const fetchProjects = async () => {
+    try {
+      const res = await fetch(`/api/projects`);
+      const data = await res.json();
+
+      setProjects(data.projects);
+    } catch (error) {
+      console.error("Error fetching projects:", error);
+    }
+  };
 
   useEffect(() => {
     fetchContacts().then(data => setContacts(data));
-    fetchProjects().then(data => setProjects(data));
+    fetchProjects();
   }, []);
 
   return (
@@ -109,48 +121,182 @@ function ContactsTab({ contacts, setContacts }) {
 }
 
 function ProjectsTab({ projects, setProjects }) {
-  const handleSave = async (id, updatedFields) => {
-    const updatedProject = await updateProject(id, updatedFields);
-    setProjects(projects.map(project => project.id === id ? updatedProject : project));
-  };
+    const router = useRouter();
+    const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
+    const [projectToDelete, setProjectToDelete] = useState(null);
+    const [openNewProjectDialog, setOpenNewProjectDialog] = useState(false);
+    const [newProject, setNewProject] = useState({
+      title: '',
+      description: '',
+      category: '',
+      image: ''
+    });
+  
+    const handleDeleteClick = (project) => {
+      setProjectToDelete(project);
+      setOpenDeleteDialog(true);
+    };
+  
+    const handleDeleteConfirm = () => {
+      setProjects(projects.filter(p => p.id !== projectToDelete.id));
+      setOpenDeleteDialog(false);
+    };
+  
+    const handleEditClick = (id) => {
+      router.push(`/admin/editproject?id=${id}`);
+    };
+  
+    const handleNewProjectClick = () => {
+      setOpenNewProjectDialog(true);
+    };
+  
+    const handleNewProjectChange = (event) => {
+      setNewProject({ ...newProject, [event.target.name]: event.target.value });
+    };
+  
+    const handleNewProjectSubmit = () => {
+      const newId = Math.max(...projects.map(p => p.id)) + 1;
+      setProjects([...projects, { id: newId, ...newProject }]);
+      setOpenNewProjectDialog(false);
+      addProject();
+      setNewProject({ title: '', description: '', category: '', image: '' });
+    };
 
-  return (
-    <Box>
-      <Typography variant="h6">Projects Table Manager</Typography>
-      <DataGrid
-        rows={projects}
-        columns={[
-          { field: 'title', headerName: 'Title', width: 200, editable: true },
-          { field: 'description', headerName: 'Description', width: 300, editable: true },
-          { field: 'detailedDescription', headerName: 'Detailed Description', width: 400, editable: true },
-          {
-            field: 'save',
-            headerName: 'Save',
-            renderCell: (params) => (
-              <Button
-                onClick={() => handleSave(params.row.id, {
-                  title: params.row.title,
-                  description: params.row.description,
-                  detailedDescription: params.row.detailedDescription,
-                })}
-              >
-                Save
-              </Button>
-            ),
-            width: 150,
-          },
-        ]}
-        pageSize={5}
-        rowsPerPageOptions={[5]}
-        checkboxSelection
-        disableSelectionOnClick
-        onCellEditCommit={(params) => {
-          const updatedProjects = projects.map(project =>
-            project.id === params.id ? { ...project, [params.field]: params.value } : project
-          );
-          setProjects(updatedProjects);
-        }}
-      />
-    </Box>
-  );
-}
+    const addProject = async () => {
+        try {
+            const response = await fetch('/api/addProject', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(newProject),
+            });
+            console.log(response)
+
+            if (!response.ok) {
+                throw new Error('Failed to update project');
+            }
+
+            const result = await response.json();
+            console.log(result.message);
+        } catch (error) {
+            console.error('Error updating project:', error);
+        }
+    }
+  
+    return (
+      <Box>
+        <Box display="flex" justifyContent="space-between" alignItems="center" mb={2}>
+          <Typography variant="h6">Projects</Typography>
+          <Button variant="contained" color="primary" startIcon={<AddIcon />} onClick={handleNewProjectClick}>
+            New Project
+          </Button>
+        </Box>
+        <TableContainer component={Paper}>
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell>ID</TableCell>
+                <TableCell>Title</TableCell>
+                <TableCell>Category</TableCell>
+                <TableCell>Website</TableCell>
+                <TableCell>GitHub</TableCell>
+                <TableCell>Actions</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {projects.map((project) => (
+                <TableRow key={project.id}>
+                  <TableCell>{project.id}</TableCell>
+                  <TableCell>{project.title}</TableCell>
+                  <TableCell>{project.category}</TableCell>
+                  <TableCell>{project.website}</TableCell>
+                  <TableCell>{project.github}</TableCell>
+                  <TableCell>
+                    <Button 
+                      startIcon={<EditIcon />} 
+                      onClick={() => handleEditClick(project.id)}
+                      sx={{ mr: 1 }}
+                    >
+                      Edit
+                    </Button>
+                    <Button 
+                      startIcon={<DeleteIcon />} 
+                      color="error"
+                      onClick={() => handleDeleteClick(project)}
+                    >
+                      Delete
+                    </Button>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+  
+        {/* Delete Confirmation Dialog */}
+        <Dialog open={openDeleteDialog} onClose={() => setOpenDeleteDialog(false)}>
+          <DialogTitle>Confirm Delete</DialogTitle>
+          <DialogContent>
+            <DialogContentText>
+              Are you sure you want to delete the project {projectToDelete?.title}?
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={() => setOpenDeleteDialog(false)}>Cancel</Button>
+            <Button onClick={handleDeleteConfirm} color="error">Delete</Button>
+          </DialogActions>
+        </Dialog>
+  
+        {/* New Project Dialog */}
+        <Dialog open={openNewProjectDialog} onClose={() => setOpenNewProjectDialog(false)}>
+          <DialogTitle>Create New Project</DialogTitle>
+          <DialogContent>
+            <TextField
+              autoFocus
+              margin="dense"
+              name="title"
+              label="Title"
+              type="text"
+              fullWidth
+              value={newProject.title}
+              onChange={handleNewProjectChange}
+            />
+            <TextField
+              margin="dense"
+              name="description"
+              label="Description"
+              type="text"
+              fullWidth
+              multiline
+              rows={4}
+              value={newProject.description}
+              onChange={handleNewProjectChange}
+            />
+            <TextField
+              margin="dense"
+              name="category"
+              label="Category"
+              type="text"
+              fullWidth
+              value={newProject.category}
+              onChange={handleNewProjectChange}
+            />
+            <TextField
+              margin="dense"
+              name="image"
+              label="Image Path"
+              type="text"
+              fullWidth
+              value={newProject.image}
+              onChange={handleNewProjectChange}
+            />
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={() => setOpenNewProjectDialog(false)}>Cancel</Button>
+            <Button onClick={handleNewProjectSubmit} color="primary">Create</Button>
+          </DialogActions>
+        </Dialog>
+      </Box>
+    );
+  }

@@ -1,4 +1,5 @@
 import Link from 'next/link'; // Import Link from next.js
+import Image from 'next/image';
 
 function NavBar({props, context}) {
     return (

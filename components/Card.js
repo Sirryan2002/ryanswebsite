@@ -1,5 +1,6 @@
 // card.js
 import PropTypes from 'prop-types';
+import Image from 'next/image';
 
 const Card = ({ href, imgSrc, imgAlt, title, description, size }) => {
   return (
