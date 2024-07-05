@@ -1,17 +1,24 @@
+
+/* Base styles for the navbar */
+header {
+  background-color: #0F0D25;
+  display: flex;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  /*justify-content: space-between;*/
+  padding: 1em;
+}
+
+/* Nav items for desktop */
 nav {
   padding-left: 2em;
   justify-content: center;
   align-items: center;
   display: flex;
+  gap: 20px;
 }
 
-header {
-  background-color: #0F0D25;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  padding: 1em;
-}
 
 .Header-nav-item {
   color: #FFFFFF;
@@ -25,20 +32,14 @@ header {
   transition: color 170ms ease-in-out, background-color 170ms ease-in-out;
 }
 
+/* Navigation Items (Links) */
 .Header-nav-item:hover {
   color: #FFC107;
 }
 
-.titleimage {
-  max-width: 100%;
-  width: 100%;
-  display: inline-block;
-  margin-top: -5em;
-  z-index: -5;
-  position: relative;
-  filter: brightness(70%);
-}
 
+
+/* Initials Logo Image */
 .initials {
   transition: filter 0.3s ease-in-out;
 }
@@ -47,30 +48,67 @@ header {
   filter: invert(72%) sepia(97%) saturate(1000%) hue-rotate(1deg) brightness(220%) contrast(105%);
 }
 
-/* Media Queries */
+/* Toggle button styles */
+.toggle-button {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+}
 
-/* For tablets and larger devices */
-@media (max-width: 768px) {
-  .navbar-image {
-    width: 50px;
-    height: auto;
+
+@media (min-width: 650px) and (max-width: 1100px) {
+  .Header-nav-item {
+    font-size: 2vw;
   }
 
-  .Header-nav-item {
-    font-size: 18px;
-    margin: 0 0.5em;
+  .initials {
+    width: 8vw;
+    height: auto;
   }
 }
 
-/* For mobile phones */
-@media (max-width: 480px) {
-  .navbar-image {
-    width: 40px;
-    height: auto;
+
+/* Styles for mobile view */
+@media (max-width: 650px) {
+  #NavBar {
+      flex-direction: column;
+  }
+
+  .logo-button-container {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .initials {
+      margin-bottom: 10px;
+  }
+
+  .initials-container {
+    justify-self: center;
+  }
+
+  nav {
+      display: none;
+      flex-direction: column;
+      width: 100%;
+  }
+
+  nav.active {
+      display: flex;
   }
 
   .Header-nav-item {
-    font-size: 16px;
-    margin: 0 0.3em;
+      width: 100%;
+      padding: 10px 0;
+      border-top: 1px solid #444; /* Change as needed */
+      text-align: center;
+  }
+
+  .toggle-button {
+    display: block;
   }
 }

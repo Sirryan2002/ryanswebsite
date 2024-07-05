@@ -17,6 +17,16 @@
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
+.titleimage {
+  max-width: 100%;
+  width: 100%;
+  display: inline-block;
+  margin-top: -5em;
+  z-index: -5;
+  position: relative;
+  filter: brightness(70%);
+}
+
 .titleimage-container {
   position: relative;
 }
