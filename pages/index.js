@@ -48,7 +48,7 @@ export default function Home() {
 const HomePage = ({ handleScroll, blurbs }) => {
   return (
     <>
-      
+      <div className="titleimage-container">
       <div className="name_splash">
         <span><b>RYAN LONGO</b></span>
         <span>Student & Chronic Hobbyist</span>
@@ -56,7 +56,6 @@ const HomePage = ({ handleScroll, blurbs }) => {
           <div className="scroll-indicator-text">{"< Learn More About Me >"}</div>
         </div>
       </div>
-      <div className="titleimage-container">
         <img className="titleimage" src={'/breaking4.png'} alt="Background" />
       </div>
       <section id="who-i-am" className="section">

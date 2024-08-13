@@ -1,11 +1,11 @@
 .name_splash {
+  margin: 1em;
   position: absolute;
-  width: 100%;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  top: 50%;
+  top: 40%;
   transform: translateY(-50%);
   z-index: 1;
 }
@@ -29,6 +29,8 @@
 
 .titleimage-container {
   position: relative;
+  display: flex;
+  justify-content: center;
 }
 
 .titleimage-container::after {
@@ -101,6 +103,10 @@ footer {
     font-size: 28px;
   }
 
+  .name_splash {
+    top: 33%;
+  }
+
   .scroll-indicator-text {
     font-size: 18px;
   }
@@ -117,6 +123,10 @@ footer {
 
 /* For mobile phones */
 @media (max-width: 480px) {
+  .titleimage {
+    margin-top: 0;
+  }
+
   .name_splash span {
     font-size: 24px;
   }
@@ -132,5 +142,9 @@ footer {
 
   form button {
     width: 100%;
+  }
+
+  .name_splash {
+    font-size: 2vw !important;
   }
 }
