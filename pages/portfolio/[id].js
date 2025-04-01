@@ -79,12 +79,12 @@ const ProjectArticle = ({ project }) => {
             <div className="project-links">
             {project.website && (
                 <a href={project.website} target="_blank" rel="noopener noreferrer" className="project-link">
-                Visit Website
+                    Visit Website
                 </a>
             )}
             {project.github && (
                 <a href={project.github} target="_blank" rel="noopener noreferrer" className="project-link">
-                View on GitHub
+                    View on GitHub
                 </a>
             )}
             </div>
