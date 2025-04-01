@@ -73,7 +73,7 @@ const ProjectArticle = ({ project }) => {
             </div>
             
             <div className="project-body">
-            <div dangerouslySetInnerHTML={{ __html: project.body }} />
+                <div dangerouslySetInnerHTML={{ __html: project.body }} />
             </div>
             
             <div className="project-links">

@@ -34,9 +34,35 @@ const Resume = () => {
 
             <h3>Professional Experience</h3>
             <div className="experience">
+              <img src="/edustaff_llc_logo.jpg" alt="EduStaff Logo" className="company-logo" />
+              <div>
+                <p><strong>EduStaff</strong> - March 2025-Present</p>
+                <p><em>Lansing Public Schools Substitute Teacher</em></p>
+                <ul>
+                  <li>Assist Educators in LPS by Subbing in when neccesary.</li>
+                  <li>Provide learning opportunities and cognitive development for Lansing K12 Students.</li>
+                  <li>Gaining direct experience at the frontline of Michigan Public Schools.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="experience">
+              <img src="/spartan-logo.png" alt="Michigan State University Logo" className="company-logo" />
+              <div>
+                <p><strong>MSU STEMed+ Department</strong> - June 2024-Present</p>
+                <p><em>Undergraduate Website Assistant</em></p>
+                <ul>
+                  <li>Drive development of website on the commons.msu.edu platform.</li>
+                  <li>Collaberate with University experts to advertise & support MSU&Apos;s STEAMpower Project.</li>
+                  <li>Leverage the Wordpress CMS to produce effective & intelligently-designed websites.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="experience">
               <img src="/msumun-logo.png" alt="MSU Model United Nations 501c3" className="company-logo" />
               <div>
-                <p><strong>MSU Model United Nations 501c3</strong> - September 2021-Present</p>
+                <p><strong>MSU Model United Nations 501c3</strong> - September 2021-March 2025</p>
                 <p><em>Secretary-General 2024-2025</em></p>
                 <p><em>USG of Technology 2023-2024</em></p>
                 <ul>
@@ -46,11 +72,21 @@ const Resume = () => {
                 </ul>
               </div>
             </div>
-
+            <div className="experience">
+              <img src="/memspa-logo-vert.webp" alt="Michigan Elementary & Middle School Principals Logo" className="company-logo" />
+              <div>
+                <p><strong>Michigan Elementary & Middle School Principals Association - MEMSPA</strong> - Agust 2024-February 2025</p>
+                <p><em>Legislative Intern</em></p>
+                <ul>
+                  <li>Researched and developed policy briefs on newly enacted education legislation to inform and support school administration professionals across Michigan. </li>
+                  <li>Conducted data analysis to identify trends and areas for improved membership representation, leveraging geospatial tools for visualization. </li>
+                </ul>
+              </div>
+            </div>
             <div className="experience">
               <img src="/cz-logo.webp" alt="Comfort Zone Cigar Lounge & Bistro" className="company-logo" />
               <div>
-                <p><strong>Comfort Zone Cigar Lounge & Bistro</strong> - October 2023-Present</p>
+                <p><strong>Comfort Zone Cigar Lounge & Bistro</strong> - October 2023-July 2024</p>
                 <p><em>Cocktail Server/Waiter</em></p>
                 <ul>
                   <li>Engaged guests with personalized service.</li>
