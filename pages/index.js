@@ -18,12 +18,22 @@ export default function Home() {
   };
 
   const blurbs = {
-    "my_story": "Hi! I'm Ryan Longo, a senior at Michigan State University with a passion for economics and education policy.\
-    I've always been fascinated by how public policy shapes our world, and I'm eager to make a difference in Michigan. Outside \
-    of my academics, I love being part of the breakdancing community in East Lansing and pursuing various passion projects (such as this website). \
-    My current professional work is in the food service industry at various restaurants which have taught me valuable skills in leadership \
-    and customer service. Ultimately, my goal is to use my experiences to improve Michigan's education system and create \
-    positive change in my community."
+    "my_story": "I'm a data analyst and education policy advocate dedicated to strengthening Michigan's educational landscape. \
+    As a recent graduate of Michigan State University's James Madison College, I earned dual bachelor's degrees in Social Relations \
+    & Policy and Economics, with a specialized focus in Educational Studies & Policy. Currently serving as a Data Analyst at \
+    Michigan Virtual, I apply my analytical expertise to support virtual learning initiatives across the state. My professional \
+    experience spans multiple sectors of Michigan's education system, from substitute teaching in Lansing Public Schools to conducting \
+    legislative research as an intern with the Michigan Elementary & Middle School Principals Association (MEMSPA), where I \
+    developed comprehensive policy briefs on education legislation and utilized geospatial analysis to identify opportunities for \
+    improved administrator representation. \
+    \
+    My technical proficiency encompasses full-stack web development, data analysis, and database management, with expertise \
+    in Python, R, JavaScript, and various web technologies. I have successfully led website development projects for MSU's \
+    STEMed+ Department and served as Secretary-General of MSU Model United Nations, where I managed a 95-member nonprofit \
+    organization and coordinated multiple conferences. Beyond my professional pursuits, I'm an active member of East Lansing's \
+    breakdancing community and maintain a passion for creative projects, including the development of this website. My diverse \
+    experiences—from grassroots community engagement to data-driven policy analysis—inform my commitment to creating positive \
+    change in Michigan's education system through research-grounded solutions and collaborative leadership."
   };
 
   return (
