@@ -18,16 +18,15 @@ export default function Home() {
   };
 
   const blurbs = {
-    "my_story": "I'm a data analyst and education policy advocate dedicated to strengthening Michigan's educational landscape. \
+    "my_story1": "I'm a data analyst and education policy advocate dedicated to strengthening Michigan's educational landscape. \
     As a recent graduate of Michigan State University's James Madison College, I earned dual bachelor's degrees in Social Relations \
     & Policy and Economics, with a specialized focus in Educational Studies & Policy. Currently serving as a Data Analyst at \
     Michigan Virtual, I apply my analytical expertise to support virtual learning initiatives across the state. My professional \
     experience spans multiple sectors of Michigan's education system, from substitute teaching in Lansing Public Schools to conducting \
     legislative research as an intern with the Michigan Elementary & Middle School Principals Association (MEMSPA), where I \
     developed comprehensive policy briefs on education legislation and utilized geospatial analysis to identify opportunities for \
-    improved administrator representation. \
-    \n\n\
-    My technical proficiency encompasses full-stack web development, data analysis, and database management, with expertise \
+    improved administrator representation.",
+    "my_story2" : "My technical proficiency encompasses full-stack web development, data analysis, and database management, with expertise \
     in Python, R, JavaScript, and various web technologies. I have successfully led website development projects for MSU's \
     STEMed+ Department and served as Secretary-General of MSU Model United Nations, where I managed a 95-member nonprofit \
     organization and coordinated multiple conferences. Beyond my professional pursuits, I'm an active member of East Lansing's \
@@ -70,7 +69,8 @@ const HomePage = ({ handleScroll, blurbs }) => {
       </div>
       <section id="who-i-am" className="section">
         <h2>Who I Am</h2>
-        <p>{blurbs.my_story}</p>
+        <p>{blurbs.my_story1}</p>
+        <p>{blurbs.my_story2}</p>
       </section>
       <section id="learn-more" className="section-light">
         <h2>Learn More About Me</h2>
