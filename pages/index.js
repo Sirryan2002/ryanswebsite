@@ -26,7 +26,7 @@ export default function Home() {
     legislative research as an intern with the Michigan Elementary & Middle School Principals Association (MEMSPA), where I \
     developed comprehensive policy briefs on education legislation and utilized geospatial analysis to identify opportunities for \
     improved administrator representation. \
-    \
+    \n\n\
     My technical proficiency encompasses full-stack web development, data analysis, and database management, with expertise \
     in Python, R, JavaScript, and various web technologies. I have successfully led website development projects for MSU's \
     STEMed+ Department and served as Secretary-General of MSU Model United Nations, where I managed a 95-member nonprofit \
