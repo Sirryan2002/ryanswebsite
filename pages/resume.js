@@ -31,12 +31,25 @@ const Resume = () => {
                 </ul>
               </div>
             </div>
-
             <h3>Professional Experience</h3>
+            <div className="experience">
+              <img src="/MichiganVirtualLogo.jpg" alt="MV Logo" className="company-logo" />
+              <div>
+                <p><strong>Michigan Virtual</strong> - May 2025-Present</p>
+                <p><em>Data Analyst</em></p>
+                <ul>
+                  <li>Query and extract data from complex datasets to provide actionable insights supporting Michigan Virtuals K-12 digital learning initiatives.</li>
+                  <li>Build and maintain critical reports and dashboards using SQL Server Management Studio and SSRS to support decision-making across the organization.</li>
+                  <li>Collaborate cross-functionally with research, technology, and program delivery teams to define data priorities and reporting strategies that maximize learning outcomes.</li>
+                  <li>Ensure compliance with Michigan Department of Education reporting requirements and data privacy regulations including FERPA and GDPR.</li>
+                </ul>
+              </div>
+            </div>
+
             <div className="experience">
               <img src="/edustaff_llc_logo.jpg" alt="EduStaff Logo" className="company-logo" />
               <div>
-                <p><strong>EduStaff</strong> - March 2025-Present</p>
+                <p><strong>EduStaff</strong> - March 2025-May 2025</p>
                 <p><em>Lansing Public Schools Substitute Teacher</em></p>
                 <ul>
                   <li>Assist Educators in LPS by Subbing in when neccesary.</li>
