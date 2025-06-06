@@ -26,7 +26,6 @@ function NavBar({props, context}) {
               <Link href="/" className="Header-nav-item">Home</Link>
               <Link href="/resume" className="Header-nav-item">Resume</Link>
               <Link href="/portfolio" className="Header-nav-item">Portfolio</Link>
-              <Link href="/services" className="Header-nav-item">Services</Link>
               <Link href="/#contact" className="Header-nav-item">Contact</Link>
           </nav>
       </header>

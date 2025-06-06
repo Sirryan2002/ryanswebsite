@@ -82,14 +82,6 @@ const HomePage = ({ handleScroll, blurbs }) => {
             size="medium"  // Use medium size for index page
           />
           <Card
-            href="/services"
-            imgSrc="/services-icon.png"
-            title="Services"
-            imgAlt="Services"
-            description="Discover the services I offer."
-            size="medium"  // Use medium size for index page
-          />
-          <Card
             href="https://www.linkedin.com/in/ryan-longo-094454239/"
             imgSrc="/linkedin-icon.jpg"
             title="LinkedIn"
