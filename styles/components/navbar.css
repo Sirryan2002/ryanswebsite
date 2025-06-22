@@ -26,7 +26,7 @@ nav {
   padding: .618em 0;
   margin: 0 .618em;
   text-transform: uppercase;
-  font-size: 22px;
+  font-size: 1.75rem;
   text-decoration: none !important;
   letter-spacing: .12em;
   transition: color 170ms ease-in-out, background-color 170ms ease-in-out;
@@ -42,6 +42,7 @@ nav {
 /* Initials Logo Image */
 .initials {
   transition: filter 0.3s ease-in-out;
+  font-size: 1.5rem
 }
 
 .initials:hover {

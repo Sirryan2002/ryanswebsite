@@ -6,6 +6,7 @@
 @import 'pages/projects.css';
 @import 'pages/project_article.css';
 @import 'pages/resume.css';
+@import 'pages/portfolio.css';
 
 /* Components */
 @import 'components/card.css';

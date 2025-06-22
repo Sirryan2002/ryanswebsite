@@ -26,6 +26,7 @@
     color: #FFC107;
   }
   
+  /*
   .project-image {
     padding-left: 25%;
     padding-right: 25%;
@@ -37,7 +38,7 @@
     width: 100%;
     height: auto;
   }
-  
+  */
   .project-description {
     font-size: 1.1em;
     line-height: 1.6;
