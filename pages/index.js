@@ -40,7 +40,7 @@ export default function Home() {
       <Head>
         <title>Ryan Longo - Home</title>
         <meta property="og:title" content="Ryan Longo - Home" />
-        <meta property="og:description" content="Hi I'm Ryan Longo! I'm a MSU student studying Economics and Education Policy. This website will tell you all about me and what I'm all about." />
+        <meta property="og:description" content="Hi I'm Ryan Longo! I'm a Data Analyst, Breakdancer, Developer, and Education Advocate. This website will tell you all about me and what I'm all about." />
         <meta property="og:image" content="https://ryanlongo.net/breaking4.png"/>
         <meta property="og:url" content="https://ryanlongo.net/"/>
         <meta property="og:type" content="website"/>
@@ -56,56 +56,135 @@ export default function Home() {
 
 const HomePage = ({ handleScroll, blurbs }) => {
   return (
-    <>
-      <div className="titleimage-container">
-      <div className="name_splash">
-        <span><b>RYAN LONGO</b></span>
-        <span>Student & Chronic Hobbyist</span>
-        <div className="scroll-indicator" onClick={handleScroll}>
-          <div className="scroll-indicator-text">{"< Learn More About Me >"}</div>
-        </div>
-      </div>
-        <img className="titleimage" src={'/breaking4.png'} alt="Background" />
-      </div>
+    <div id="main_page">
+      <HeroSection handleScroll={handleScroll} />
       <section id="who-i-am" className="section">
-        <h2>Who I Am</h2>
-        <p>{blurbs.my_story1}</p>
-        <p>{blurbs.my_story2}</p>
+        <div className="content-container">
+          <h2>Who I Am</h2>
+          <p>{blurbs.my_story1}</p>
+          <p>{blurbs.my_story2}</p>
+        </div>
       </section>
       <section id="learn-more" className="section-light">
-        <h2>Learn More About Me</h2>
-        <div className="cards">
-          <Card
-            href="/resume"
-            imgSrc="/resume-icon.jpg"
-            imgAlt="Resume"
-            title="Resume"
-            description="Check out my professional experiences and skills."
-            size="medium"  // Use medium size for index page
-          />
-          <Card
-            href="/portfolio"
-            imgSrc="/projects-icon.png"
-            imgAlt="Projects"
-            title="Portfolio"
-            description="Explore the projects I have worked on."
-            size="medium"  // Use medium size for index page
-          />
-          <Card
-            href="https://www.linkedin.com/in/ryan-longo-094454239/"
-            imgSrc="/linkedin-icon.jpg"
-            title="LinkedIn"
-            imgAlt="LinkedIn"
-            description="Connect with me on LinkedIn."
-            size="medium"  // Use medium size for index page
-          />
+        <div className="content-container">
+          <h2>Learn More About Me</h2>
+          <div className="cards">
+            <Card
+              href="/resume"
+              imgSrc="/resume-icon.jpg"
+              imgAlt="Resume"
+              title="Resume"
+              description="Check out my professional experiences and skills."
+              size="medium"
+            />
+            <Card
+              href="/portfolio"
+              imgSrc="/projects-icon.png"
+              imgAlt="Projects"
+              title="Portfolio"
+              description="Explore the projects I have worked on."
+              size="medium"
+            />
+            <Card
+              href="https://www.linkedin.com/in/ryan-longo-094454239/"
+              imgSrc="/linkedin-icon.jpg"
+              title="LinkedIn"
+              imgAlt="LinkedIn"
+              description="Connect with me on LinkedIn."
+              size="medium"
+            />
+          </div>
         </div>
       </section>
       <section id="contact" className="section">
-        <ContactForm />
+        <div className="content-container">
+          <ContactForm />
+        </div>
       </section>
+    </div>
+  );
+};
+
+const HeroSection = ({ handleScroll }) => {
+  const [currentLabel, setCurrentLabel] = useState('');
+  const [isAnimating, setIsAnimating] = useState(false);
+
+  // Labels that cycle through
+  const labels = [
+    'Breakdancer',
+    'Developer', 
+    'Amateur Baker',
+    'Academic',
+    'Educator',
+    'Policy Advocate',
+    'Web Designer',
+    'Chronic Hobbyist',
+    'MSU Spartan',
+    'Coffee Enthusiast'
+  ];
+
+  // Shuffle array function
+  const shuffleArray = (array) => {
+    const shuffled = [...array];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+  };
+
+  useEffect(() => {
+    // Create a shuffled order for this page load
+    const shuffledLabels = shuffleArray(labels);
+    let currentIndex = 0;
+
+    // Set initial label
+    setCurrentLabel(shuffledLabels[0]);
+
+    const interval = setInterval(() => {
+      setIsAnimating(true);
       
-    </>
+      setTimeout(() => {
+        currentIndex = (currentIndex + 1) % shuffledLabels.length;
+        setCurrentLabel(shuffledLabels[currentIndex]);
+        setIsAnimating(false);
+      }, 250); // Half of animation duration
+      
+    }, 7500); // Change every 7.5 seconds
+
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <div className="hero-container">
+      <div className="hero-background">
+        <img className="hero-image" src={'/breaking4.png'} alt="Ryan Longo breakdancing" />
+        <div className="hero-overlay"></div>
+      </div>
+      
+      <div className="hero-content">
+        <div className="hero-text">
+          <h1 className="hero-title">RYAN LONGO</h1>
+          <div className="hero-subtitle">
+            <span className="static-text">Data Analyst & </span>
+            <span className={`dynamic-text ${isAnimating ? 'fade-out' : 'fade-in'}`}>
+              {currentLabel}
+            </span>
+          </div>
+        </div>
+        
+        <button className="hero-cta" onClick={handleScroll}>
+          <span>Learn More About Me</span>
+          <i className="scroll-arrow">↓</i>
+        </button>
+      </div>
+
+      {/* Scroll Indicator */}
+      <div className="scroll-indicator">
+        <span>Scroll</span>
+        <div className="scroll-line"></div>
+      </div>
+    </div>
   );
 };
 
@@ -146,23 +225,58 @@ const ContactForm = () => {
   };
 
   return (
-    <section id="contact" className="section">
+    <>
       <h2>Contact Me</h2>
       <p>Feel free to reach out to me via the contact form below.</p>
-      <form onSubmit={handleSubmit}>
-        <input type="text" name="name" placeholder="Your Name" value={formData.name} onChange={handleChange} required />
-        <input type="email" name="email" placeholder="Your Email" value={formData.email} onChange={handleChange} required />
-        <textarea name="message" placeholder="Your Message" value={formData.message} onChange={handleChange} required></textarea>
-        <button type="submit">Send</button>
+      <form onSubmit={handleSubmit} className="contact-form">
+        <div className="form-group">
+          <input 
+            type="text" 
+            name="name" 
+            placeholder="Your Name" 
+            value={formData.name} 
+            onChange={handleChange} 
+            required 
+            className="form-input"
+          />
+        </div>
+        <div className="form-group">
+          <input 
+            type="email" 
+            name="email" 
+            placeholder="Your Email" 
+            value={formData.email} 
+            onChange={handleChange} 
+            required 
+            className="form-input"
+          />
+        </div>
+        <div className="form-group">
+          <textarea 
+            name="message" 
+            placeholder="Your Message" 
+            value={formData.message} 
+            onChange={handleChange} 
+            required
+            className="form-textarea"
+            rows="5"
+          ></textarea>
+        </div>
+        <button type="submit" className="form-submit">Send Message</button>
       </form>
+      
       {isConfirming && (
         <div className="confirmation-modal">
-          <p>Are you sure you want to send this message?</p>
-          <button onClick={handleConfirm}>Confirm</button>
-          <button onClick={() => setIsConfirming(false)}>Cancel</button>
+          <div className="modal-content" >
+            <p style={{color : 'black'}}>Are you sure you want to send this message?</p>
+            <div className="modal-actions">
+              <button onClick={handleConfirm} className="btn-confirm">Confirm</button>
+              <button onClick={() => setIsConfirming(false)} className="btn-cancel">Cancel</button>
+            </div>
+          </div>
         </div>
       )}
-      {error && <p className="error">{error}</p>}
-    </section>
+      {error && <p className="error-message">{error}</p>}
+    </>
   );
 };
