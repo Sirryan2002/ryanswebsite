@@ -1,5 +1,7 @@
 @import 'main.css';
 
+/* Admin */
+@import 'admin/project_editor.css';
 
 /* Pages */
 @import 'pages/mainpage.css';

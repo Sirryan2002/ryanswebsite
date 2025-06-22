@@ -268,7 +268,7 @@ const ProjectsGallery = () => {
                   </div>
                 )}
               </div>
-              <div className="project-content">
+              <div className="project-content" style={{minHeight : 0}}>
                 <div className={`project-category ${getCategoryClass(project.category)}`}>
                   {getCategoryLabel(project.category)}
                 </div>
