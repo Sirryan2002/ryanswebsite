@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 
 const EnhancedProjectEditor = () => {
     const router = useRouter();
-    const { id } = router.query;
+    const { id } = router.query; // pull id out of URL params
 
     const [project, setProject] = useState({
         title: '',
@@ -41,15 +41,15 @@ const EnhancedProjectEditor = () => {
         { value: 'research', label: 'Research' },
         { value: 'volunteering', label: 'Volunteering' },
         { value: 'fun', label: 'For Fun' },
-        { value: 'work', label: 'Work' }
     ];
 
     useEffect(() => {
         if (id) {
             loadProject(id);
         }
-    }, [id]);
+    }, [id]); // upon page load, load project from ID via API
 
+    // makes a call to the getProject API
     const loadProject = async (projectId) => {
         try {
             const res = await fetch(`/api/getProject?id=${projectId}`);
@@ -58,7 +58,9 @@ const EnhancedProjectEditor = () => {
             // Parse body content if it exists
             let parsedContent = [];
             if (data.body) {
-                try {
+                // if there is anything returned, the expected return is JSON
+                // however, legacy rows will not be in JSON format so we default to paragraph block
+                try { 
                     parsedContent = JSON.parse(data.body);
                 } catch {
                     parsedContent = [{ type: 'paragraph', content: data.body }];
@@ -73,6 +75,8 @@ const EnhancedProjectEditor = () => {
         }
     };
 
+    // onChange() handler for when a basic field in the editor is changed
+    // just updates the field with the new value.
     const handleBasicChange = (field, value) => {
         setProjectDraft(prev => ({
             ...prev,
@@ -80,6 +84,7 @@ const EnhancedProjectEditor = () => {
         }));
     };
 
+    // special onChange() handler for tech, needs to split the comma delimited input first!
     const handleTechnologiesChange = (value) => {
         const techArray = value.split(',').map(tech => tech.trim()).filter(tech => tech);
         setProjectDraft(prev => ({
@@ -88,11 +93,13 @@ const EnhancedProjectEditor = () => {
         }));
     };
 
+    // Helper function for creating a new content block in the content editor
     const addContentBlock = (type) => {
         const newBlock = createEmptyBlock(type);
         setContentBlocks(prev => [...prev, newBlock]);
     };
 
+    // constructor for content blocks
     const createEmptyBlock = (type) => {
         const baseBlock = { type, id: Date.now() };
         
@@ -118,22 +125,29 @@ const EnhancedProjectEditor = () => {
         }
     };
 
+    // 
     const updateContentBlock = (index, updates) => {
+        // iterate through existing blocks until we find our one with the index ID provided
         setContentBlocks(prev => prev.map((block, i) => 
+            // only update the block matching our ID, return all other blocks as they were
             i === index ? { ...block, ...updates } : block
+            // we're using the spread operator here to map the changes on updates to the block we identified!
         ));
     };
 
+    // just removes the block where we match the index! Input safe
     const deleteContentBlock = (index) => {
         setContentBlocks(prev => prev.filter((_, i) => i !== index));
     };
 
+    
     const moveContentBlock = (index, direction) => {
         const newIndex = direction === 'up' ? index - 1 : index + 1;
-        if (newIndex < 0 || newIndex >= contentBlocks.length) return;
+        if (newIndex < 0 || newIndex >= contentBlocks.length) return; // sanity check to stay in-bounds
 
         setContentBlocks(prev => {
-            const newBlocks = [...prev];
+            const newBlocks = [...prev]; // create a copy of prev
+            // "array destructuring assignment", fancy way of swapping two indices in an array
             [newBlocks[index], newBlocks[newIndex]] = [newBlocks[newIndex], newBlocks[index]];
             return newBlocks;
         });
@@ -154,11 +168,27 @@ const EnhancedProjectEditor = () => {
 
             if (!response.ok) throw new Error('Failed to save project');
             
-            alert('Project saved successfully!');
-            setProject(projectData);
+            const result = await response.json();
+            
+            // Handle successful creation of new project
+            if (result.project && (!id || id === 'new' || id === null)) {
+                // Update the URL to reflect the new project ID
+                const newProjectId = result.project.id;
+                router.replace(`/admin/editproject?id=${newProjectId}`, undefined, { shallow: true });
+                
+                // Update local state with the new project data
+                setProject(result.project);
+                setProjectDraft(result.project);
+            } else {
+                // Update existing project
+                setProject(projectData);
+            }
+            
+            alert(result.message || 'Project saved successfully!');
+            
         } catch (error) {
             console.error('Error saving project:', error);
-            alert('Error saving project');
+            alert('Error saving project: ' + error.message);
         }
     };
 
@@ -436,7 +466,7 @@ const EnhancedProjectEditor = () => {
     };
 
     return (
-        <div className="enhanced-editor">
+        <div className="enhanced-editor" id='admin'>
             <div className="editor-header">
                 <h1>Edit Project: {projectDraft.title || 'New Project'}</h1>
                 <div className="editor-actions">

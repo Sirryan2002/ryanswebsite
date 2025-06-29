@@ -150,7 +150,7 @@ const HeroSection = ({ handleScroll }) => {
         setIsAnimating(false);
       }, 250); // Half of animation duration
       
-    }, 7500); // Change every 7.5 seconds
+    }, 6000); // Change every 6 seconds
 
     return () => clearInterval(interval);
   }, []);
