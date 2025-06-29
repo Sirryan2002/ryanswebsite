@@ -15,12 +15,6 @@ export default function Portfolio() {
     document.getElementById("portfolio-title").scrollIntoView({ behavior: 'smooth' });
   };
 
-  const handleInfoClick = () => {
-    // You can navigate to an about page or show more info
-    // For example: router.push('/about') or open a modal
-    console.log("Info button clicked - navigate to about or show more info");
-  };
-
   return (
     <WebsiteContainer>
       <Head>
@@ -30,10 +24,12 @@ export default function Portfolio() {
       <NavBar />
       <div className="featuredimage-container">
         {/* Info Button */}
-        <div className="info-button" onClick={handleInfoClick}>
-          <i className='bx bx-info-circle'></i>
-          <div className="info-tooltip">Learn more about me</div>
-        </div>
+        <Link href={`/portfolio/9`}>         
+          <div className="info-button">
+            <i className='bx bx-info-circle'></i>
+            <div className="info-tooltip">Learn more about my experience running a Model United Nations organization in college</div>
+          </div>
+        </Link>
 
         {/* Enhanced Hero Splash */}
         <div className="portfolio_splash">
@@ -53,7 +49,7 @@ export default function Portfolio() {
           </div>
         </div>
 
-        <img className="featuredimage" src={'/IMG_5225.jpg'} alt="Background" />
+        <img className="featuredimage" src={'/msumun/msumun_group.jpg'} alt="Background" />
       </div>
 
       <AllProjects />
