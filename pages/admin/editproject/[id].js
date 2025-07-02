@@ -174,7 +174,7 @@ const EnhancedProjectEditor = () => {
             if (result.project && (!id || id === 'new' || id === null)) {
                 // Update the URL to reflect the new project ID
                 const newProjectId = result.project.id;
-                router.replace(`/admin/editproject?id=${newProjectId}`, undefined, { shallow: true });
+                router.replace(`/admin/editproject/${newProjectId}`, undefined, { shallow: true });
                 
                 // Update local state with the new project data
                 setProject(result.project);
