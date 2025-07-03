@@ -303,7 +303,7 @@ const OverviewTab = ({ stats }) => {
       <div className="quick-actions">
         <h2>Quick Actions</h2>
         <div className="action-grid">
-          <Link href="/admin/editproject?id=new" className="action-card">
+          <Link href="/admin/editproject/new" className="action-card">
             <i className='bx bx-plus'></i>
             <h3>New Project</h3>
             <p>Create a new portfolio project</p>
