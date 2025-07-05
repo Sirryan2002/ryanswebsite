@@ -22,6 +22,8 @@ const EnhancedProjectEditor = () => {
     });
 
     const [projectDraft, setProjectDraft] = useState({...project});
+    // Separate state for the technologies input string
+    const [technologiesInput, setTechnologiesInput] = useState('');
     const [contentBlocks, setContentBlocks] = useState([]);
     const [activeTab, setActiveTab] = useState('basic');
 
@@ -48,6 +50,11 @@ const EnhancedProjectEditor = () => {
             loadProject(id);
         }
     }, [id]); // upon page load, load project from ID via API
+
+    // Keep technologiesInput in sync with projectDraft.technologies
+    useEffect(() => {
+        setTechnologiesInput(projectDraft.technologies?.join(', ') || '');
+    }, [projectDraft.technologies]);
 
     // makes a call to the getProject API
     const loadProject = async (projectId) => {
@@ -84,9 +91,14 @@ const EnhancedProjectEditor = () => {
         }));
     };
 
-    // special onChange() handler for tech, needs to split the comma delimited input first!
-    const handleTechnologiesChange = (value) => {
-        const techArray = value.split(',').map(tech => tech.trim()).filter(tech => tech);
+    // Handle changes to the technologies input string
+    const handleTechnologiesInputChange = (value) => {
+        setTechnologiesInput(value);
+    };
+
+    // When the input loses focus, update the array in projectDraft
+    const handleTechnologiesBlur = () => {
+        const techArray = technologiesInput.split(',').map(tech => tech.trim()).filter(tech => tech);
         setProjectDraft(prev => ({
             ...prev,
             technologies: techArray
@@ -568,8 +580,9 @@ const EnhancedProjectEditor = () => {
                             <label>Technologies (comma-separated)</label>
                             <input
                                 type="text"
-                                value={projectDraft.technologies?.join(', ') || ''}
-                                onChange={(e) => handleTechnologiesChange(e.target.value)}
+                                value={technologiesInput}
+                                onChange={(e) => handleTechnologiesInputChange(e.target.value)}
+                                onBlur={handleTechnologiesBlur}
                                 className="form-input"
                                 placeholder="React, Node.js, MongoDB..."
                             />
