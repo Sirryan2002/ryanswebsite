@@ -477,7 +477,7 @@ const ProjectsTab = () => {
     <div className="projects-tab">
       <div className="projects-header">
         <h1>Project Management</h1>
-        <Link href="/admin/editproject?id=new" className="new-project-btn">
+        <Link href="/admin/editproject/new" className="new-project-btn">
           <i className='bx bx-plus'></i>
           New Project
         </Link>
