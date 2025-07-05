@@ -9,7 +9,6 @@ const Modal = ({ project, onClose }) => {
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
         <h2>{project.title}</h2>
         <center><img src={project.image} alt={project.title} /></center>
-        <p>{project.description}</p>
         {project.description && <p>{project.description}... {<Link href={{pathname: '/portfolio/[id]', query: {id: project.id}}}>{"Read More"}</Link>}</p>}
         <div className="modal-links">
           {project.website && (
