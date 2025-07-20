@@ -15,7 +15,7 @@ export default async function handler(req, res) {
     let query = supabase
       .from('projects')
       .select('*')
-      .order('id', { ascending: true })
+      .order('date', { ascending: false })
       .limit(parseInt(limit, 10));
 
     if (startAfter) {
